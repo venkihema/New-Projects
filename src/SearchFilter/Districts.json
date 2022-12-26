@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Anantapur"
+  },
+  {
+    "id": "2",
+    "name": "Chittoor"
+  },
+  {
+    "id": "3",
+    "name": "East Godavari"
+  },
+  {
+    "id": "4",
+    "name": "Guntur"
+  },
+  {
+    "id": "5",
+    "name": "Kadapa"
+  },
+  {
+    "id": "6",
+    "name": "Krishna"
+  },
+  {
+    "id": "7",
+    "name": "Kurnool"
+  },
+  {
+    "id": "8",
+    "name": "Nellore"
+  },
+  {
+    "id": "9",
+    "name": "Prakasam"
+  },
+  {
+    "id": "10",
+    "name": "Srikakulam"
+  },
+  {
+    "id": "11",
+    "name": "Visakhapatnam"
+  },
+  {
+    "id": "12",
+    "name": "West Godavari"
+  }
+]
