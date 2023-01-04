@@ -16,6 +16,12 @@ export function Home() {
         <Link to="calc" style={{ textDecoration: "none" }}>
           <p>Calculator</p>
         </Link>
+        <Link to="/todo" style={{ textDecoration: "none" }}>
+          <p>Todo-List</p>
+        </Link>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <p>Log-In</p>
+        </Link>
       </div>
     </div>
   );
