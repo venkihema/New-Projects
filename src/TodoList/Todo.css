@@ -101,3 +101,50 @@
   color: teal;
   transition: 0.5s;
 }
+.editDiv {
+  width: 100%;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.updateInput {
+  width: 95%;
+  position: relative;
+  left: 35px;
+}
+.updateInput input {
+  width: 100%;
+  background-color: white;
+  box-sizing: border-box;
+  text-align: start;
+  padding-left: 10px;
+}
+.updateBtn {
+  width: 38%;
+  margin-left: 77px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateBtn button {
+  width: 70%;
+  height: 50px;
+  outline: none;
+  font-size: large;
+  background-color: cadetblue;
+  color: white;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.updateBtn button:hover {
+  background-color: wheat;
+  color: teal;
+  transition: 0.5s;
+}

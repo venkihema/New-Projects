@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./Todo.css";
+import { Todo } from "./EachTodoComponent";
 export const TodoList = () => {
   const [input, setInput] = useState("");
-  const [data, setData] = useState([]);
+  const [todos, setTodos] = useState([]);
+
   const todoKey = "todos";
   const changeInput = (e) => {
     setInput(e.target.value);
@@ -10,8 +12,8 @@ export const TodoList = () => {
 
   const addData = (e) => {
     if (input.length !== 0) {
-      const newTodos = [...data, { todo: input, id: Math.random() }];
-      setData(newTodos);
+      const newTodos = [...todos, { todo: input, id: Math.random() }];
+      setTodos(newTodos);
       localStorage.setItem(todoKey, JSON.stringify(newTodos));
     }
     setInput("");
@@ -19,26 +21,28 @@ export const TodoList = () => {
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem(todoKey) || "[]");
-    setData(data);
+    setTodos(data);
   }, []);
 
   const deleteTodo = (todoId) => {
-    const filteredData = data.filter((item) => item.id !== todoId);
-    setData(filteredData);
+    const filteredData = todos.filter((item) => item.id !== todoId);
+    setTodos(filteredData);
     localStorage.setItem(todoKey, JSON.stringify(filteredData));
   };
 
-  const editTodo = (editId) => {
-    // const editedData = data.filter((item) => item.id === editId);
-    // setInput(editedData[0].todo);
-    // const filter = data.map((item) => {
-    //   if (item.id === editId) {
-    //     item.todo = input;
-    //   }
-    //   return item;
-    // });
-    // setData(filter);
-    // localStorage.setItem(todoKey, JSON.stringify(filter));
+  const editTodo = (newTodo) => {
+    console.log(newTodo);
+    const id = newTodo.id;
+    console.log(id);
+    const updatedTodos = todos.map((item) => {
+      if (item.id === newTodo.id) {
+        return newTodo;
+      } else {
+        return item;
+      }
+    });
+    setTodos(updatedTodos);
+    localStorage.setItem(todoKey, JSON.stringify(updatedTodos));
   };
 
   return (
@@ -55,27 +59,22 @@ export const TodoList = () => {
           <button onClick={addData}> Create</button>
         </div>
       </div>
-      <div>
-        {data.length === 0 ? (
-          <h4 style={{ color: "white", paddingLeft: "35px" }}>
-            Add Your Todos Here
-          </h4>
-        ) : (
-          data.map((item, index) => {
-            return (
-              <div key={index} className="createdTodos">
-                <div className="eachTodo">
-                  <h4>{item.todo}</h4>
-                </div>
-                <div className="eachTodoButton">
-                  <button onClick={() => deleteTodo(item.id)}>Delete</button>
-                  <button onClick={() => editTodo(item.id)}>Edit</button>
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
+      {todos.length === 0 ? (
+        <h4 style={{ color: "white", paddingLeft: "35px" }}>
+          Add Your Todos Here
+        </h4>
+      ) : (
+        todos.map((item, index) => {
+          return (
+            <Todo
+              key={index}
+              data={item}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          );
+        })
+      )}
     </div>
   );
 };
